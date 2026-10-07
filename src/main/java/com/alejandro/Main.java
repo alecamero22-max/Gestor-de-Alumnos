@@ -12,7 +12,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         int contador = 0;
-        boolean sigue
+        boolean sigue = false;
         do {
             System.out.println("AÑADIR ALUMNOS: 1");
             System.out.println("Visualizar alumnos: 2");
