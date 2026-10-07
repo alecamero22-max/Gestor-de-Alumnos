@@ -9,6 +9,7 @@ public class Main {
         Alumno a1 = new Alumno();
         Alumno a2 = new Alumno();
         Alumno a3 = new Alumno();
+        /* CAMBIAR A ARRAY DE ALUMNOS ---> pisa: Alumnos[] : borrar lo de arriba (usar de otra manera)*/
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         int contador = 0;
@@ -22,6 +23,7 @@ public class Main {
             opcion = sc.nextInt();
             sc.nextLine();
 
+            /** Adaptar el añadir alumnos usando arrays */
             if (opcion == 1) {
                 if (contador>=3){
                     System.err.println("Ya están todos los alumnos escritos");
@@ -38,11 +40,13 @@ public class Main {
                 }
                 contador++;
                 System.out.println("Alumnos creados");
+                /* Visualizar alumnos con un bucle recorriendo el array */
             } else if (opcion == 2) {
                 System.out.println(a1.toString());
                 System.out.println(a2.toString());
                 System.out.println(a3.toString());
 
+                /** Modificar con un bucle hasta encontrar el alumno  */
             } else if (opcion == 3) {
                 System.out.println("¿Qué alumno quieres modificar? (1, 2 o 3)");
                 int numeroAlumno = sc.nextInt();
