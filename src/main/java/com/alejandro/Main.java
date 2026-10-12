@@ -6,10 +6,8 @@ import com.alejandro.clases.Alumno;
 
 public class Main {
     public static void main(String[] args) {
-        Alumno a1 = new Alumno();
-        Alumno a2 = new Alumno();
-        Alumno a3 = new Alumno();
-        /* CAMBIAR A ARRAY DE ALUMNOS ---> pisa: Alumnos[] : borrar lo de arriba (usar de otra manera)*/
+
+        Alumno[] arrayAlumnos = new Alumno[3];
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         int contador = 0;
@@ -25,44 +23,33 @@ public class Main {
 
             /** Adaptar el añadir alumnos usando arrays */
             if (opcion == 1) {
-                if (contador>=3){
+                if (contador >= 3) {
                     System.err.println("Ya están todos los alumnos escritos");
+                } else {
+                    System.out.println("Introduce el nombre del alumno");
+                    String nombre = sc.nextLine();
+                    arrayAlumnos[contador] = new Alumno(nombre);
+                    contador++;
+                    System.out.println("Alumnos creados");
+                }
 
-                }
-                System.out.println("Introduce el nombre del alumno");
-                String nombre = sc.nextLine();
-                if (contador==0){
-                    a1.setNombre(nombre);
-                }else if(contador==1){
-                    a2.setNombre(nombre);
-                }else{
-                    a3.setNombre(nombre);
-                }
-                contador++;
-                System.out.println("Alumnos creados");
                 /* Visualizar alumnos con un bucle recorriendo el array */
             } else if (opcion == 2) {
-                System.out.println(a1.toString());
-                System.out.println(a2.toString());
-                System.out.println(a3.toString());
+                for (int i = 0; i < contador; i++) {
+                    System.out.println(arrayAlumnos[i].toString());
+                }
 
-                /** Modificar con un bucle hasta encontrar el alumno  */
+                /** Modificar con un bucle hasta encontrar el alumno */
             } else if (opcion == 3) {
                 System.out.println("¿Qué alumno quieres modificar? (1, 2 o 3)");
                 int numeroAlumno = sc.nextInt();
                 sc.nextLine();
 
-                if (numeroAlumno >= 1 && numeroAlumno <= 3) {
+                if (numeroAlumno >= 1 && numeroAlumno <= contador) {
                     System.out.println("Introduce el nuevo nombre");
                     String nuevoNombre = sc.nextLine();
 
-                    if (numeroAlumno == 1) {
-                        a1.setNombre(nuevoNombre);
-                    } else if (numeroAlumno == 2) {
-                        a2.setNombre(nuevoNombre);
-                    } else {
-                        a3.setNombre(nuevoNombre);
-                    }
+                    arrayAlumnos[numeroAlumno - 1].setNombre(nuevoNombre);
                     System.out.println("Alumno modificado");
                 } else {
                     System.out.println("Número de alumno no válido");

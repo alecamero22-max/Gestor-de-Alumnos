@@ -5,6 +5,10 @@ public class Alumno {
 	private String nombre;
 	private int edad;
 
+	public Alumno(String nombre){
+		this.nombre = nombre;
+	}
+
     public void setEdad(int edad) {
         this.edad = edad;
     }
@@ -27,6 +31,7 @@ public class Alumno {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
 
     @Override
     public String toString() {
