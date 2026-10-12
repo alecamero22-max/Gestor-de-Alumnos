@@ -1,5 +1,6 @@
 package com.alejandro;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import com.alejandro.clases.Alumno;
@@ -7,7 +8,7 @@ import com.alejandro.clases.Alumno;
 public class Main {
     public static void main(String[] args) {
 
-        Alumno[] arrayAlumnos = new Alumno[3];
+        ArrayList<Alumno> arrayAlumnos = new ArrayList<>();
         Scanner sc = new Scanner(System.in);
         int opcion = 0;
         int contador = 0;
@@ -21,25 +22,20 @@ public class Main {
             opcion = sc.nextInt();
             sc.nextLine();
 
-            /** Adaptar el añadir alumnos usando arrays */
+            /**añadir alumnos usando ArrayList */
             if (opcion == 1) {
-                if (contador >= 3) {
-                    System.err.println("Ya están todos los alumnos escritos");
-                } else {
-                    System.out.println("Introduce el nombre del alumno");
-                    String nombre = sc.nextLine();
-                    arrayAlumnos[contador] = new Alumno(nombre);
-                    contador++;
-                    System.out.println("Alumnos creados");
-                }
+                System.out.println("Introduce el nombre del alumno");
+                String nombre = sc.nextLine();
+                arrayAlumnos.add(new Alumno(nombre));
+                contador++;
+                System.out.println("Alumnos creados");
 
-                /* Visualizar alumnos con un bucle recorriendo el array */
+                /* Visualizar alumnos recorriendo el ArrayList */
             } else if (opcion == 2) {
                 for (int i = 0; i < contador; i++) {
-                    System.out.println(arrayAlumnos[i].toString());
+                    System.out.println(arrayAlumnos.get(i).toString());
                 }
 
-                /** Modificar con un bucle hasta encontrar el alumno */
             } else if (opcion == 3) {
                 System.out.println("¿Qué alumno quieres modificar? (1, 2 o 3)");
                 int numeroAlumno = sc.nextInt();
@@ -49,7 +45,7 @@ public class Main {
                     System.out.println("Introduce el nuevo nombre");
                     String nuevoNombre = sc.nextLine();
 
-                    arrayAlumnos[numeroAlumno - 1].setNombre(nuevoNombre);
+                    arrayAlumnos.get(numeroAlumno - 1).setNombre(nuevoNombre);
                     System.out.println("Alumno modificado");
                 } else {
                     System.out.println("Número de alumno no válido");
