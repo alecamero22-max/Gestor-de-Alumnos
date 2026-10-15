@@ -20,21 +20,17 @@ public class Main {
 
             opcion = sc.nextInt();
             sc.nextLine();
-
             
             switch (opcion) {
                 case 1:
                     System.out.println("Introduce el nombre del alumno");
                     String nombre = sc.nextLine();
-                    arrayAlumnos.add(new Alumno(nombre));
+                    arrayAlumnos = crearAlumno(nombre, arrayAlumnos);
                     contador++;
-                    System.out.println("Alumnos creados");
                     break;
 
                 case 2:
-                    for (int i = 0; i < contador; i++) {
-                        System.out.println(arrayAlumnos.get(i).toString());
-                    }
+                    visualizarAlumnos(arrayAlumnos, contador);
                     break;
 
                 case 3:
@@ -46,8 +42,7 @@ public class Main {
                         System.out.println("Introduce el nuevo nombre");
                         String nuevoNombre = sc.nextLine();
 
-                        arrayAlumnos.get(numeroAlumno - 1).setNombre(nuevoNombre);
-                        System.out.println("Alumno modificado");
+                        arrayAlumnos = modificarAlumno(numeroAlumno, nuevoNombre, arrayAlumnos);
                     } else {
                         System.out.println("Número de alumno no válido");
                     }
@@ -64,5 +59,24 @@ public class Main {
         } while (opcion != 4);
 
         sc.close();
+    }
+
+    public static ArrayList<Alumno> crearAlumno(String nombre, ArrayList<Alumno> alumnos) {
+        Alumno nuevoAlumno = new Alumno(nombre);
+        alumnos.add(nuevoAlumno);
+        System.out.println("Alumnos creados");
+        return alumnos;
+    }
+
+    public static void visualizarAlumnos(ArrayList<Alumno> alumnos, int contador) {
+        for (int i = 0; i < contador; i++) {
+            System.out.println(alumnos.get(i).toString());
+        }
+    }
+
+    public static ArrayList<Alumno> modificarAlumno(int numeroAlumno, String nuevoNombre, ArrayList<Alumno> alumnos) {
+        alumnos.get(numeroAlumno - 1).setNombre(nuevoNombre);
+        System.out.println("Alumno modificado");
+        return alumnos;
     }
 }
